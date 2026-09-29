@@ -1,0 +1,157 @@
+{
+  "schema": "gwdc.yieldwindow.nile-evidence.v1",
+  "product": "YieldWindow",
+  "network": "TRON Nile",
+  "verifier": {
+    "origin": "https://api.nileex.io",
+    "independentFromBroadcaster": true
+  },
+  "deployment": {
+    "checkedAt": "2026-09-29T13:54:37.813Z",
+    "transactionId": "7f48196490dccdda47e1ca0166d99c7b9b583d4cc5ea5c3b802838c26fd0b091",
+    "contractAddress": "TSqoRAmu4qviTuscsakTWdYRZQjpiTjP2u",
+    "verifierOrigin": "https://api.nileex.io",
+    "status": "confirmed",
+    "blockNumber": 71387432,
+    "blockTimeStamp": 1790689353000,
+    "feeSun": 7563200,
+    "reason": "独立 Nile 固化节点已匹配部署交易、执行回执、地址、创建字节码与运行时代码。"
+  },
+  "receipt": {
+    "payload": {
+      "schema": "yieldwindow/allocation-plan-commitment@1",
+      "kind": "allocation-plan-commitment",
+      "network": "TRON Nile",
+      "product": "YieldWindow",
+      "plan": {
+        "id": "demo-gwdc-seoul-settlement-v1-90000000000-10000000000-68000000000-12000000000-80000000000-4-4-balanced-true-200000-balanced",
+        "title": "闲置资金增强",
+        "createdAt": "2026-09-29T00:00:00.000Z",
+        "confirmedAt": "2026-09-29T00:02:00.000Z"
+      },
+      "marketSnapshot": {
+        "id": "demo-gwdc-seoul-settlement-v1",
+        "mode": "demo",
+        "fetchedAt": "2026-09-29T00:00:00.000Z",
+        "phaseEnd": null,
+        "incentiveDaysVerified": 0,
+        "markets": {
+          "USDT": {
+            "asset": "USDT",
+            "address": "TXJgMdjVX5dKiQaUi9QobwNxtSQaFqccvd",
+            "underlyingAddress": "TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t",
+            "decimals": 6,
+            "baseRate": 0.02,
+            "incentiveRate": 0,
+            "cash": "1000000"
+          },
+          "USDD": {
+            "asset": "USDD",
+            "address": "TKFRELGGoRgiayhwJTNNLqCNjFoLBh3Mnf",
+            "underlyingAddress": "TXDk8mbtRbXeYuMNS83CfKPaYYT8XWv9Hz",
+            "decimals": 18,
+            "baseRate": 0.00001,
+            "incentiveRate": 0.04,
+            "cash": "1000000"
+          }
+        },
+        "sources": [
+          {
+            "name": "JustLend 市场与激励 API",
+            "url": "https://openapi.just.network/lend/jtoken",
+            "fetchedAt": "2026-09-29T00:00:00.000Z",
+            "status": "unavailable",
+            "note": "读取失败；下列 2% / 4% 是明确标注的演示参数。"
+          },
+          {
+            "name": "USDD 官方协议说明",
+            "url": "https://docs.usdd.io/introduction/readme.md",
+            "fetchedAt": "2026-09-29T00:00:00.000Z",
+            "status": "unavailable",
+            "note": "未能实时读取，保留官方链接供核查。"
+          }
+        ]
+      },
+      "reserveConstraints": {
+        "usdtMicros": 90000000000,
+        "usddMicros": 10000000000,
+        "sellerSettlementMicros": 68000000000,
+        "bufferMicros": 12000000000,
+        "reserveMicros": 80000000000,
+        "reserveInDays": 4,
+        "horizonDays": 4,
+        "allowUSDD": true,
+        "hasDebt": false
+      },
+      "allocations": [
+        {
+          "asset": "USDT",
+          "amountMicros": 80000000000,
+          "destination": "wallet",
+          "baseYieldMicros": 0,
+          "incentiveYieldMicros": 0
+        },
+        {
+          "asset": "USDT",
+          "amountMicros": 10000000000,
+          "destination": "justlend",
+          "baseYieldMicros": 2191781,
+          "incentiveYieldMicros": 0
+        },
+        {
+          "asset": "USDD",
+          "amountMicros": 10000000000,
+          "destination": "justlend",
+          "baseYieldMicros": 1096,
+          "incentiveYieldMicros": 0
+        }
+      ],
+      "expectedRangeMicros": {
+        "conservativeNet": 992877,
+        "indicativeIfCurrentBonusPersists": 5376439,
+        "minimum": 992877,
+        "maximum": 5376439,
+        "costIncludingExit": 1200000,
+        "guarantee": false
+      },
+      "assumptions": [
+        "以 1 USDT / USDD = 1 USD 估值，仅用于场景比较，不是汇率承诺。",
+        "基础收益按当前年化利率做线性期限估算，不是已到账收益。",
+        "运营成本为用户输入的每次操作费用假设，含 approve / deposit / withdraw，非实时 gas 报价。",
+        "奖励期时区 / 完整条款尚未确认，保守净收益不计激励；另列持续激励情景。"
+      ],
+      "risks": [
+        "USDT / USDD 都有脱锚风险，不能把稳定币等同于保本现金。",
+        "供应利率随市场变化；协议、合约和治理存在风险。",
+        "可赎回不等于任意时刻保证到账，受市场可用流动性约束。",
+        "激励利率不保证延续；奖励领取时点及条件须另行核实。"
+      ],
+      "exitConditions": [
+        "钱包中的用款预留可直接支配；仍需支付链上转账成本。",
+        "JustLend 赎回前检查可用 liquidity、账户无债务限制及交易资源。",
+        "本版不跨链、不换币，不使用 Ethereum / BNB 的 sUSDD 条款代替 TRON 退出条件。"
+      ]
+    },
+    "canonical": "{\"allocations\":[{\"amountMicros\":80000000000,\"asset\":\"USDT\",\"baseYieldMicros\":0,\"destination\":\"wallet\",\"incentiveYieldMicros\":0},{\"amountMicros\":10000000000,\"asset\":\"USDT\",\"baseYieldMicros\":2191781,\"destination\":\"justlend\",\"incentiveYieldMicros\":0},{\"amountMicros\":10000000000,\"asset\":\"USDD\",\"baseYieldMicros\":1096,\"destination\":\"justlend\",\"incentiveYieldMicros\":0}],\"assumptions\":[\"以 1 USDT / USDD = 1 USD 估值，仅用于场景比较，不是汇率承诺。\",\"基础收益按当前年化利率做线性期限估算，不是已到账收益。\",\"运营成本为用户输入的每次操作费用假设，含 approve / deposit / withdraw，非实时 gas 报价。\",\"奖励期时区 / 完整条款尚未确认，保守净收益不计激励；另列持续激励情景。\"],\"exitConditions\":[\"钱包中的用款预留可直接支配；仍需支付链上转账成本。\",\"JustLend 赎回前检查可用 liquidity、账户无债务限制及交易资源。\",\"本版不跨链、不换币，不使用 Ethereum / BNB 的 sUSDD 条款代替 TRON 退出条件。\"],\"expectedRangeMicros\":{\"conservativeNet\":992877,\"costIncludingExit\":1200000,\"guarantee\":false,\"indicativeIfCurrentBonusPersists\":5376439,\"maximum\":5376439,\"minimum\":992877},\"kind\":\"allocation-plan-commitment\",\"marketSnapshot\":{\"fetchedAt\":\"2026-09-29T00:00:00.000Z\",\"id\":\"demo-gwdc-seoul-settlement-v1\",\"incentiveDaysVerified\":0,\"markets\":{\"USDD\":{\"address\":\"TKFRELGGoRgiayhwJTNNLqCNjFoLBh3Mnf\",\"asset\":\"USDD\",\"baseRate\":0.00001,\"cash\":\"1000000\",\"decimals\":18,\"incentiveRate\":0.04,\"underlyingAddress\":\"TXDk8mbtRbXeYuMNS83CfKPaYYT8XWv9Hz\"},\"USDT\":{\"address\":\"TXJgMdjVX5dKiQaUi9QobwNxtSQaFqccvd\",\"asset\":\"USDT\",\"baseRate\":0.02,\"cash\":\"1000000\",\"decimals\":6,\"incentiveRate\":0,\"underlyingAddress\":\"TR7NHqjeKQxGTCi8q8ZY4pL8otSzgjLj6t\"}},\"mode\":\"demo\",\"phaseEnd\":null,\"sources\":[{\"fetchedAt\":\"2026-09-29T00:00:00.000Z\",\"name\":\"JustLend 市场与激励 API\",\"note\":\"读取失败；下列 2% / 4% 是明确标注的演示参数。\",\"status\":\"unavailable\",\"url\":\"https://openapi.just.network/lend/jtoken\"},{\"fetchedAt\":\"2026-09-29T00:00:00.000Z\",\"name\":\"USDD 官方协议说明\",\"note\":\"未能实时读取，保留官方链接供核查。\",\"status\":\"unavailable\",\"url\":\"https://docs.usdd.io/introduction/readme.md\"}]},\"network\":\"TRON Nile\",\"plan\":{\"confirmedAt\":\"2026-09-29T00:02:00.000Z\",\"createdAt\":\"2026-09-29T00:00:00.000Z\",\"id\":\"demo-gwdc-seoul-settlement-v1-90000000000-10000000000-68000000000-12000000000-80000000000-4-4-balanced-true-200000-balanced\",\"title\":\"闲置资金增强\"},\"product\":\"YieldWindow\",\"reserveConstraints\":{\"allowUSDD\":true,\"bufferMicros\":12000000000,\"hasDebt\":false,\"horizonDays\":4,\"reserveInDays\":4,\"reserveMicros\":80000000000,\"sellerSettlementMicros\":68000000000,\"usddMicros\":10000000000,\"usdtMicros\":90000000000},\"risks\":[\"USDT / USDD 都有脱锚风险，不能把稳定币等同于保本现金。\",\"供应利率随市场变化；协议、合约和治理存在风险。\",\"可赎回不等于任意时刻保证到账，受市场可用流动性约束。\",\"激励利率不保证延续；奖励领取时点及条件须另行核实。\"],\"schema\":\"yieldwindow/allocation-plan-commitment@1\"}",
+    "digestHex": "0x6f3297e04df6ee64a94d69c8fa8c3ac7a29fdcb69df18f953fe77ed21e9f85ed",
+    "kindHex": "0x7969656c6477696e646f772e706c616e2e763100000000000000000000000000",
+    "callData": "e3ce094d7969656c6477696e646f772e706c616e2e7631000000000000000000000000006f3297e04df6ee64a94d69c8fa8c3ac7a29fdcb69df18f953fe77ed21e9f85ed"
+  },
+  "proof": {
+    "network": "nile",
+    "registryAddress": "TSqoRAmu4qviTuscsakTWdYRZQjpiTjP2u",
+    "kindHex": "0x7969656c6477696e646f772e706c616e2e763100000000000000000000000000",
+    "digestHex": "0x6f3297e04df6ee64a94d69c8fa8c3ac7a29fdcb69df18f953fe77ed21e9f85ed",
+    "transactionId": "4adaf2cfc03e80c36533cad6024e17de463eedc2efef66da3c1873602c1fca51",
+    "submitter": "TQcxtc1CmGRL8NwuDs3LewTBFycgXb28AR",
+    "preparedAt": "2026-09-29T13:53:17.443Z",
+    "broadcastAt": "2026-09-29T13:53:18.785Z",
+    "status": "confirmed",
+    "explorerUrl": "https://nile.tronscan.org/#/transaction/4adaf2cfc03e80c36533cad6024e17de463eedc2efef66da3c1873602c1fca51",
+    "verifiedAt": "2026-09-29T13:54:39.873Z",
+    "reason": "Nile 固化交易、零价值调用与 ReceiptCommitted 事件均已匹配。",
+    "signedTransactionDigest": "0x255ac427f5f6ada7494b33a8253ca910509a2161e7be5e9641962de8c1bb516e",
+    "blockNumber": 71387648,
+    "chainTimestamp": "2026-09-29T13:53:21.000Z"
+  }
+}

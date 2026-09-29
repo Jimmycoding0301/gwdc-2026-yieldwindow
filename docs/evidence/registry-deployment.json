@@ -1,0 +1,23 @@
+{
+  "schema": "gwdc.receipt-registry.nile-deployment.v1",
+  "network": "TRON Nile testnet",
+  "broadcasterOrigin": "https://nile.trongrid.io",
+  "verifierOrigin": "https://api.nileex.io",
+  "walletAddress": "TQcxtc1CmGRL8NwuDs3LewTBFycgXb28AR",
+  "artifact": {
+    "sourceSha256": "6c93ce3b2917c84e277ca54a6ebdc59b86aaa0dbc71f55b4b2256f378ab9fb4d",
+    "bytecodeSha256": "f05eb9480fca6c5aa7d4df9e1ddfa7d34a8e6703915735c8f8432c9e2978bf22",
+    "deployedBytecodeSha256": "f52c3e7d3894947d3f590d3e4b304b7cd0e768adb684fc43c1d9fef319f92116"
+  },
+  "verification": {
+    "checkedAt": "2026-09-29T13:54:37.813Z",
+    "transactionId": "7f48196490dccdda47e1ca0166d99c7b9b583d4cc5ea5c3b802838c26fd0b091",
+    "contractAddress": "TSqoRAmu4qviTuscsakTWdYRZQjpiTjP2u",
+    "verifierOrigin": "https://api.nileex.io",
+    "status": "confirmed",
+    "blockNumber": 71387432,
+    "blockTimeStamp": 1790689353000,
+    "feeSun": 7563200,
+    "reason": "独立 Nile 固化节点已匹配部署交易、执行回执、地址、创建字节码与运行时代码。"
+  }
+}

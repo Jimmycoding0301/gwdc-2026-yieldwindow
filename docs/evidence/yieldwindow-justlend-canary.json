@@ -1,0 +1,55 @@
+{
+  "schemaVersion": "1.0.0",
+  "project": "YieldWindow",
+  "purpose": "A minimal live JustLend V1 write-path canary; it is not the stablecoin treasury plan.",
+  "network": "TRON Nile",
+  "chainId": "0xcd8690dc",
+  "rpc": "https://nile.trongrid.io",
+  "ownerAddress": "TQcxtc1CmGRL8NwuDs3LewTBFycgXb28AR",
+  "market": {
+    "name": "jTOKEN_TRX",
+    "symbol": "jTRX",
+    "address": "TKM7w4qFmkXQLEF2MgrQroBYpd5TY7i1pq",
+    "underlying": "TRX",
+    "amountSun": 1000000
+  },
+  "balances": {
+    "before": {
+      "trxSun": "1991623600",
+      "jTrxRaw": "0"
+    },
+    "afterMint": {
+      "trxSun": "1982251200",
+      "jTrxRaw": "8946435518"
+    },
+    "afterRedeem": {
+      "trxSun": "1975622700",
+      "jTrxRaw": "0"
+    }
+  },
+  "mint": {
+    "txID": "9b2098a8751d002bc80ca139737db0ded3cbd64770f71644ab4520aadf30b663",
+    "explorerUrl": "https://nile.tronscan.org/#/transaction/9b2098a8751d002bc80ca139737db0ded3cbd64770f71644ab4520aadf30b663",
+    "blockNumber": 71389024,
+    "blockTimeStamp": 1790694141000,
+    "feeSun": 8372400,
+    "energyUsageTotal": 80894,
+    "result": "SUCCESS"
+  },
+  "redeem": {
+    "txID": "9546eb310aa71bd514a9709b3082e4c525a744539ae6f541069b4a27d36128ff",
+    "explorerUrl": "https://nile.tronscan.org/#/transaction/9546eb310aa71bd514a9709b3082e4c525a744539ae6f541069b4a27d36128ff",
+    "blockNumber": 71389044,
+    "blockTimeStamp": 1790694201000,
+    "feeSun": 7628500,
+    "energyUsageTotal": 73155,
+    "result": "SUCCESS"
+  },
+  "generatedAt": "2026-09-29T15:04:17.250Z",
+  "integrity": "d5d233615711326e4611d4d566842f36e9c24c4022519a3bb0217518b27b5a9a",
+  "boundary": [
+    "This canary proves a real JustLend deposit and redemption on Nile using 1 test TRX.",
+    "It does not claim that the USDT/USDD treasury allocation was executed.",
+    "Signed transactions and the test private key are stored only in ignored local .data files."
+  ]
+}
